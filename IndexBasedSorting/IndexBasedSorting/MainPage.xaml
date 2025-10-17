@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:IndexBasedSorting"
+             xmlns:kanban="clr-namespace:Syncfusion.Maui.Kanban;assembly=Syncfusion.Maui.Kanban"
+             xmlns:ListCollection="clr-namespace:System.Collections.Generic;assembly=netstandard"
+             x:Class="IndexBasedSorting.MainPage">
+
+    <ContentPage.BindingContext>
+        <local:KanbanViewModel/>
+    </ContentPage.BindingContext>
+    
+    <Grid RowDefinitions="auto, 0.85*">        
+        <kanban:SfKanban x:Name="kanban"
+                         Grid.Row="1"
+                         SortingMappingPath="Index"
+                         SortingOrder="Ascending"
+                         ItemsSource="{Binding Cards}"
+                         ColumnMappingPath="Category">
+            <kanban:SfKanban.CardTemplate>
+                <DataTemplate >
+                    <Border Stroke="Black"
+                            StrokeThickness="1"
+                            StrokeShape="RoundRectangle 8"
+                            Background="#F3EADC">
+                        <Grid RowDefinitions="Auto,Auto"
+                              ColumnDefinitions="Auto,*"
+                              ColumnSpacing="8"
+                              Padding="8">
+                            <HorizontalStackLayout Grid.Row="0"
+                                                   Grid.ColumnSpan="2"
+                                                   Spacing="4"
+                                                   VerticalOptions="Center"
+                                                   HeightRequest="20"
+                                                   HorizontalOptions="End">
+                                <Label Text="{Binding Index, StringFormat='Rank #{0}'}"
+                                       FontSize="14"
+                                       FontAttributes="Bold"
+                                       TextColor="#026B6E" 
+                                       VerticalOptions="Center"
+                                       VerticalTextAlignment="Center"
+                                       HeightRequest="20"/>
+                            </HorizontalStackLayout>
+                            <Label Grid.Row="0"
+                                   Grid.ColumnSpan="2"
+                                   Text="{Binding Title}"
+                                   FontAttributes="Bold"
+                                   FontSize="14"
+                                   HorizontalTextAlignment="Start"
+                                   VerticalTextAlignment="Center"
+                                   Margin="5"/>
+                            <Label Grid.Row="2"
+                                   Grid.ColumnSpan="2"
+                                   Text="{Binding Description}"
+                                   FontSize="12"
+                                   HorizontalTextAlignment="Start"
+                                   LineBreakMode="WordWrap"
+                                   Margin="5"/>
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </kanban:SfKanban.CardTemplate>
+            <kanban:KanbanColumn Title="Open"
+                                 Categories="Open"/>
+            <kanban:KanbanColumn Title="In Progress"
+                                 Categories="In Progress"/>
+            <kanban:KanbanColumn Title="Done"
+                                 Categories="Done"
+                                 AllowDrag="False"/>
+        </kanban:SfKanban>
+
+        <HorizontalStackLayout Spacing="15"
+                               Padding="5"
+                               Margin="10,0,0,0"
+                               Grid.Row="0">
+            <Label Text="Sort direction"
+                   FontAttributes="Bold"
+                   VerticalOptions="Center"/>
+            <Picker x:Name="sortOrderPicker"
+                    WidthRequest="200"
+                    HorizontalOptions="Start"
+                    VerticalOptions="Center" >
+            </Picker>
+        </HorizontalStackLayout>
+    </Grid>
+    
+    <ContentPage.Behaviors>
+        <local:IndexSortingBehavior/>
+    </ContentPage.Behaviors>
+</ContentPage>
