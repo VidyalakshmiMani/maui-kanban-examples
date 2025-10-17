@@ -6,7 +6,7 @@
     /// <summary>
     /// Represents the behavior for managing sorting cards in a sample view.
     /// </summary>
-    public class CustomSortingBehavior : Behavior<ContentPage>
+    public class SortingBehavior : Behavior<ContentPage>
     {
         #region Fields
 
