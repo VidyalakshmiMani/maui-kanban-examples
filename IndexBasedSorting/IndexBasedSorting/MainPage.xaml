@@ -85,6 +85,6 @@
     </Grid>
     
     <ContentPage.Behaviors>
-        <local:IndexSortingBehavior/>
+        <local:SortingBehavior/>
     </ContentPage.Behaviors>
 </ContentPage>

@@ -1,8 +1,8 @@
-﻿using Microsoft.Extensions.Logging;
-using Syncfusion.Maui.Core.Hosting;
-
-namespace IndexBasedSorting
+﻿namespace IndexBasedSorting
 {
+    using Microsoft.Extensions.Logging;
+    using Syncfusion.Maui.Core.Hosting;
+
     public static class MauiProgram
     {
         public static MauiApp CreateMauiApp()
