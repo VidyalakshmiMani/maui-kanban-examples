@@ -3,14 +3,13 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:IndexBasedSorting"
              xmlns:kanban="clr-namespace:Syncfusion.Maui.Kanban;assembly=Syncfusion.Maui.Kanban"
-             xmlns:ListCollection="clr-namespace:System.Collections.Generic;assembly=netstandard"
              x:Class="IndexBasedSorting.MainPage">
 
     <ContentPage.BindingContext>
         <local:KanbanViewModel/>
     </ContentPage.BindingContext>
-    
-    <Grid RowDefinitions="auto, 0.85*">        
+
+    <Grid RowDefinitions="auto, 0.85*">
         <kanban:SfKanban x:Name="kanban"
                          Grid.Row="1"
                          SortingMappingPath="Index"
@@ -83,7 +82,7 @@
             </Picker>
         </HorizontalStackLayout>
     </Grid>
-    
+
     <ContentPage.Behaviors>
         <local:SortingBehavior/>
     </ContentPage.Behaviors>
